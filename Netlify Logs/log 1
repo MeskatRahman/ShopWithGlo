@@ -1,0 +1,96 @@
+9:08:33 PM: Netlify Build                                                 
+9:08:33 PM: ────────────────────────────────────────────────────────────────
+9:08:33 PM: ​
+9:08:33 PM: ❯ Version
+9:08:33 PM:   @netlify/build 35.3.4
+9:08:33 PM: ​
+9:08:33 PM: ❯ Flags
+9:08:33 PM:   accountId: 690672f9820bbb30f519ac1a
+9:08:33 PM:   baseRelDir: true
+9:08:33 PM:   buildId: 6919e8de4440697914dd9e61
+9:08:33 PM:   deployId: 6919e8de4440697914dd9e63
+9:08:33 PM:   packagePath: apps/frontend
+9:08:33 PM: ​
+9:08:33 PM: ❯ Current directory
+9:08:33 PM:   /opt/build/repo
+9:08:33 PM: ​
+9:08:33 PM: ❯ Config file
+9:08:33 PM:   No config file was defined: using default values.
+9:08:33 PM: ​
+9:08:33 PM: ❯ Context
+9:08:33 PM:   production
+9:08:34 PM: ​
+9:08:34 PM: ❯ Using Next.js Runtime - v5.14.5
+9:08:35 PM: No Next.js cache to restore
+9:08:35 PM: ​
+9:08:35 PM: Build command from Netlify app                                
+9:08:35 PM: ────────────────────────────────────────────────────────────────
+9:08:35 PM: ​
+9:08:35 PM: $ npm --workspace frontend run build
+9:08:35 PM: > frontend@0.1.0 build
+9:08:35 PM: > next build
+9:08:36 PM: ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+9:08:36 PM:    ▲ Next.js 16.0.3 (Turbopack)
+9:08:36 PM:    Creating an optimized production build ...
+9:08:42 PM: > Build error occurred
+9:08:42 PM: Error: Turbopack build failed with 2 errors:
+9:08:42 PM: ./apps/frontend/src/components/home/HeroSection.tsx:1:27
+9:08:42 PM: Ecmascript file had an error
+9:08:42 PM: > 1 | import React, { useState, useEffect } from 'react';
+9:08:42 PM:     |                           ^^^^^^^^^
+9:08:42 PM:   2 | import Image from 'next/image';
+9:08:42 PM:   3 | import Link from 'next/link';
+9:08:42 PM:   4 |
+9:08:42 PM: You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+9:08:42 PM:  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+9:08:42 PM: Import trace:
+9:08:42 PM:   Server Component:
+9:08:42 PM:     ./apps/frontend/src/components/home/HeroSection.tsx
+9:08:42 PM:     ./apps/frontend/src/app/page.tsx
+9:08:42 PM: ./apps/frontend/src/components/home/HeroSection.tsx:1:17
+9:08:42 PM: Ecmascript file had an error
+9:08:42 PM: > 1 | import React, { useState, useEffect } from 'react';
+9:08:42 PM:     |                 ^^^^^^^^
+9:08:42 PM:   2 | import Image from 'next/image';
+9:08:42 PM:   3 | import Link from 'next/link';
+9:08:42 PM:   4 |
+9:08:42 PM: You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+9:08:42 PM:  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+9:08:42 PM: Import trace:
+9:08:42 PM:   Server Component:
+9:08:42 PM:     ./apps/frontend/src/components/home/HeroSection.tsx
+9:08:42 PM:     ./apps/frontend/src/app/page.tsx
+9:08:42 PM:     at <unknown> (./apps/frontend/src/components/home/HeroSection.tsx:1:27)
+9:08:42 PM:     at <unknown> (./apps/frontend/src/components/home/HeroSection.tsx:1:17)
+9:08:42 PM: npm error Lifecycle script `build` failed with error:
+9:08:42 PM: npm error code 1
+9:08:42 PM: npm error path /opt/build/repo/apps/frontend
+9:08:42 PM: npm error workspace frontend@0.1.0
+9:08:42 PM: npm error location /opt/build/repo/apps/frontend
+9:08:42 PM: npm error command failed
+9:08:42 PM: npm error command sh -c next build
+9:08:42 PM: ​
+9:08:42 PM: "build.command" failed                                        
+9:08:42 PM: ────────────────────────────────────────────────────────────────
+9:08:42 PM: ​
+9:08:42 PM:   Error message
+9:08:42 PM:   Command failed with exit code 1: npm --workspace frontend run build (https://ntl.fyi/exit-code-1)
+9:08:42 PM: ​
+9:08:42 PM:   Error location
+9:08:42 PM:   In Build command from Netlify app:
+9:08:42 PM:   npm --workspace frontend run build
+9:08:42 PM: ​
+9:08:42 PM:   Resolved config
+9:08:42 PM:   build:
+9:08:42 PM:     command: npm --workspace frontend run build
+9:08:42 PM:     commandOrigin: ui
+9:08:42 PM:     publish: /opt/build/repo/apps/frontend/.next
+9:08:42 PM:     publishOrigin: ui
+9:08:42 PM:   plugins:
+9:08:42 PM:     - inputs: {}
+9:08:42 PM:       origin: ui
+9:08:42 PM:       package: "@netlify/plugin-nextjs"
+9:08:43 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+9:08:43 PM: Failing build: Failed to build site
+9:08:43 PM: Finished processing build request in 27.416s
+9:08:43 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)

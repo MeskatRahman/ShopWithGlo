@@ -62,14 +62,14 @@ const HeroSection: React.FC = () => {
         priority
         className="transition-opacity duration-1000 ease-in-out"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+      <div className="absolute inset-0 bg-black-primary bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-celadon-light mb-4">
           {currentBanner.title}
         </h1>
-        <p className="text-lg md:text-xl text-white mb-8 max-w-2xl">
+        <p className="text-lg md:text-xl text-celadon-light mb-8 max-w-2xl">
           {currentBanner.description}
         </p>
-        <Link href={currentBanner.link} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300">
+        <Link href={currentBanner.link} className="bg-magical-neon-purple-vibrant hover:bg-magical-neon-purple-deep text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300">
           Shop Now
         </Link>
       </div>
@@ -78,7 +78,7 @@ const HeroSection: React.FC = () => {
           <button
             key={index}
             onClick={() => setCurrentBannerIndex(index)}
-            className={`h-3 w-3 rounded-full bg-white ${
+            className={`h-3 w-3 rounded-full bg-celadon-light ${
               currentBannerIndex === index ? 'opacity-100' : 'opacity-50'
             } hover:opacity-75 transition-opacity duration-300`}
           />

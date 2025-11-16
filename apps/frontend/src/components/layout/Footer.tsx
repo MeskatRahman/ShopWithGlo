@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8 mt-8">
+    <footer className="bg-black-primary text-celadon-light py-8 mt-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Info */}
@@ -19,17 +19,17 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul>
               <li className="mb-2">
-                <Link href="/terms" className="hover:underline">
+                <Link href="/terms" className="hover:text-magical-neon-purple-vibrant">
                   Terms & Conditions
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/privacy" className="hover:underline">
+                <Link href="/privacy" className="hover:text-magical-neon-purple-vibrant">
                   Privacy Policy
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/return-policy" className="hover:underline">
+                <Link href="/return-policy" className="hover:text-magical-neon-purple-vibrant">
                   Return Policy
                 </Link>
               </li>
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500">
+        <div className="border-t border-dusty-olive-dark mt-8 pt-8 text-center text-muted-teal">
           &copy; {new Date().getFullYear()} ShopWithGlo. All rights reserved.
         </div>
       </div>

@@ -49,20 +49,20 @@ const categories: Category[] = [
 
 const CategoryGrid: React.FC = () => {
   return (
-    <section className="py-8">
+    <section className="py-8 bg-charcoal-brown">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Shop by Category</h2>
+        <h2 className="text-3xl font-bold text-celadon-light mb-6 text-center">Shop by Category</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {categories.map((category) => (
             <Link href={`/categories/${category.slug}`} key={category.id} className="block">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="bg-carbon-black rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <img
                   src={category.imageUrl}
                   alt={category.name}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4 text-center">
-                  <h3 className="text-xl font-semibold text-gray-800">{category.name}</h3>
+                  <h3 className="text-xl font-semibold text-celadon-light">{category.name}</h3>
                 </div>
               </div>
             </Link>

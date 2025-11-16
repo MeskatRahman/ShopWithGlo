@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-black-primary shadow-sm text-celadon-light">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <div>
-          <Link href="/" className="text-2xl font-bold text-gray-800">
+          <Link href="/" className="text-2xl font-bold hover:text-magical-neon-purple-vibrant">
             ShopWithGlo
           </Link>
         </div>
@@ -17,21 +17,21 @@ const Header: React.FC = () => {
           <input
             type="text"
             placeholder="Search for products..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-dusty-olive-dark rounded-md focus:outline-none focus:ring-2 focus:ring-magical-neon-purple-vibrant bg-carbon-black text-celadon-light placeholder-muted-teal"
           />
         </div>
 
         {/* Right Section: Currency, Cart, User Account */}
         <div className="flex items-center space-x-4">
           {/* Currency Selector */}
-          <select className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none">
+          <select className="border border-dusty-olive-dark rounded-md px-3 py-2 focus:outline-none bg-carbon-black text-celadon-light">
             <option>USD</option>
             <option>EUR</option>
             <option>BDT</option>
           </select>
 
           {/* Cart Icon */}
-          <Link href="/cart" className="text-gray-600 hover:text-gray-800">
+          <Link href="/cart" className="hover:text-magical-neon-purple-vibrant">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* User Account/Login */}
-          <Link href="/account" className="text-gray-600 hover:text-gray-800 flex items-center space-x-1">
+          <Link href="/account" className="hover:text-magical-neon-purple-vibrant flex items-center space-x-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
