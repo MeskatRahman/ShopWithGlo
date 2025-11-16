@@ -12,15 +12,23 @@ const Header: React.FC = () => {
           </Link>
         </div>
 
-        {/* Search Bar */}
-        <div className="flex-grow mx-4 max-w-xl">
-          <Link href="/search" className="block">
-            <input
-              type="text"
-              placeholder="Search for products..."
-              className="w-full px-4 py-2 border border-dusty-olive-dark rounded-md focus:outline-none focus:ring-2 focus:ring-magical-neon-purple-vibrant bg-carbon-black text-celadon-light placeholder-muted-teal cursor-pointer"
-              readOnly // Make it read-only as it will navigate to the search page
-            />
+        {/* Search Icon */}
+        <div className="flex-grow mx-4 max-w-xl flex justify-center">
+          <Link href="/search" className="text-celadon-light hover:text-magical-neon-purple-vibrant">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </Link>
         </div>
 
