@@ -14,11 +14,14 @@ const Header: React.FC = () => {
 
         {/* Search Bar */}
         <div className="flex-grow mx-4 max-w-xl">
-          <input
-            type="text"
-            placeholder="Search for products..."
-            className="w-full px-4 py-2 border border-dusty-olive-dark rounded-md focus:outline-none focus:ring-2 focus:ring-magical-neon-purple-vibrant bg-carbon-black text-celadon-light placeholder-muted-teal"
-          />
+          <Link href="/search" className="block">
+            <input
+              type="text"
+              placeholder="Search for products..."
+              className="w-full px-4 py-2 border border-dusty-olive-dark rounded-md focus:outline-none focus:ring-2 focus:ring-magical-neon-purple-vibrant bg-carbon-black text-celadon-light placeholder-muted-teal cursor-pointer"
+              readOnly // Make it read-only as it will navigate to the search page
+            />
+          </Link>
         </div>
 
         {/* Right Section: Currency, Cart, User Account */}
