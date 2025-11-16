@@ -1,27 +1,32 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCurrency } from '../../context/CurrencyContext';
 
 interface Product {
   id: string;
   name: string;
   imageUrl: string;
-  price: string;
+  priceUSD: number; // Change to number for conversion
   slug: string;
 }
 
 const dummyProducts: Product[] = [
-  { id: 'p1', name: 'Product 1', imageUrl: 'https://via.placeholder.com/200x200?text=Product+1', price: '$10.00', slug: 'product-1' },
-  { id: 'p2', name: 'Product 2', imageUrl: 'https://via.placeholder.com/200x200?text=Product+2', price: '$20.00', slug: 'product-2' },
-  { id: 'p3', name: 'Product 3', imageUrl: 'https://via.placeholder.com/200x200?text=Product+3', price: '$30.00', slug: 'product-3' },
-  { id: 'p4', name: 'Product 4', imageUrl: 'https://via.placeholder.com/200x200?text=Product+4', price: '$40.00', slug: 'product-4' },
-  { id: 'p5', name: 'Product 5', imageUrl: 'https://via.placeholder.com/200x200?text=Product+5', price: '$50.00', slug: 'product-5' },
-  { id: 'p6', name: 'Product 6', imageUrl: 'https://via.placeholder.com/200x200?text=Product+6', price: '$60.00', slug: 'product-6' },
-  { id: 'p7', name: 'Product 7', imageUrl: 'https://via.placeholder.com/200x200?text=Product+7', price: '$70.00', slug: 'product-7' },
-  { id: 'p8', name: 'Product 8', imageUrl: 'https://via.placeholder.com/200x200?text=Product+8', price: '$80.00', slug: 'product-8' },
+  { id: 'p1', name: 'Product 1', imageUrl: 'https://via.placeholder.com/200x200?text=Product+1', priceUSD: 10.00, slug: 'product-1' },
+  { id: 'p2', name: 'Product 2', imageUrl: 'https://via.placeholder.com/200x200?text=Product+2', priceUSD: 20.00, slug: 'product-2' },
+  { id: 'p3', name: 'Product 3', imageUrl: 'https://via.placeholder.com/200x200?text=Product+3', priceUSD: 30.00, slug: 'product-3' },
+  { id: 'p4', name: 'Product 4', imageUrl: 'https://via.placeholder.com/200x200?text=Product+4', priceUSD: 40.00, slug: 'product-4' },
+  { id: 'p5', name: 'Product 5', imageUrl: 'https://via.placeholder.com/200x200?text=Product+5', priceUSD: 50.00, slug: 'product-5' },
+  { id: 'p6', name: 'Product 6', imageUrl: 'https://via.placeholder.com/200x200?text=Product+6', priceUSD: 60.00, slug: 'product-6' },
+  { id: 'p7', name: 'Product 7', imageUrl: 'https://via.placeholder.com/200x200?text=Product+7', priceUSD: 70.00, slug: 'product-7' },
+  { id: 'p8', name: 'Product 8', imageUrl: 'https://via.placeholder.com/200x200?text=Product+8', priceUSD: 80.00, slug: 'product-8' },
 ];
 
 const ProductListingPage: React.FC = () => {
+  const { convertPrice, formatPrice, selectedCurrency } = useCurrency();
+
   return (
     <div className="container mx-auto px-4 py-8 bg-charcoal-brown text-celadon-light min-h-screen">
       <h1 className="text-4xl font-bold mb-8 text-center">All Products</h1>
@@ -33,11 +38,11 @@ const ProductListingPage: React.FC = () => {
           
           {/* Price Range */}
           <div className="mb-6">
-            <h3 className="text-lg font-medium mb-3">Price Range</h3>
+            <h3 className="text-lg font-medium mb-3">Price Range ({selectedCurrency.code})</h3>
             <input type="range" min="0" max="1000" className="w-full accent-magical-neon-purple-vibrant" />
             <div className="flex justify-between text-sm mt-2">
-              <span>$0</span>
-              <span>$1000+</span>
+              <span>{formatPrice(convertPrice(0))}</span>
+              <span>{formatPrice(convertPrice(1000))}+</span>
             </div>
           </div>
 
@@ -101,7 +106,9 @@ const ProductListingPage: React.FC = () => {
                   />
                   <div className="p-4">
                     <h3 className="text-lg font-semibold text-celadon-light mb-2">{product.name}</h3>
-                    <p className="text-magical-neon-purple-vibrant font-bold">{product.price}</p>
+                    <p className="text-magical-neon-purple-vibrant font-bold">
+                      {formatPrice(convertPrice(product.priceUSD))}
+                    </p>
                   </div>
                 </div>
               </Link>

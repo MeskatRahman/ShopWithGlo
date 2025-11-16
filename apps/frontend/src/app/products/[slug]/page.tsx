@@ -1,20 +1,22 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCurrency } from '../../../context/CurrencyContext';
 
 interface Product {
   id: string;
   name: string;
   sku: string;
-  priceBDT: string;
-  priceUSD: string;
+  priceUSD: number; // Change to number for conversion
   stock: number;
   description: string;
   specifications: { [key: string]: string };
   images: string[];
   variants: { type: string; options: string[] }[];
   estimatedDelivery: string;
-  shippingCost: string;
+  shippingCostUSD: number; // Change to number for conversion
   returnPolicy: string;
   authenticityGuarantee: string;
   rating: number;
@@ -25,8 +27,7 @@ const dummyProduct: Product = {
   id: 'pdp1',
   name: 'Premium Wireless Earbuds',
   sku: 'ELEC001',
-  priceBDT: '৳ 3,500',
-  priceUSD: '$35.00',
+  priceUSD: 35.00,
   stock: 150,
   description: 'Experience crystal-clear audio with our premium wireless earbuds. Featuring active noise cancellation, long-lasting battery life, and a comfortable ergonomic design, these earbuds are perfect for music lovers and professionals alike. Comes with a sleek charging case.',
   specifications: {
@@ -45,7 +46,7 @@ const dummyProduct: Product = {
     { type: 'Color', options: ['Black', 'White', 'Blue'] },
   ],
   estimatedDelivery: '15-20 business days',
-  shippingCost: '৳ 150 (approx. $1.50)',
+  shippingCostUSD: 1.50, // Change to number for conversion
   returnPolicy: '30-day return policy',
   authenticityGuarantee: '100% original product guarantee',
   rating: 4.5,
@@ -53,6 +54,7 @@ const dummyProduct: Product = {
 };
 
 const ProductDetailPage: React.FC<{ params: { slug: string } }> = ({ params }) => {
+  const { convertPrice, formatPrice, selectedCurrency } = useCurrency();
   // In a real application, you would fetch product data based on params.slug
   const product = dummyProduct; // Using dummy data for now
 
@@ -91,8 +93,10 @@ const ProductDetailPage: React.FC<{ params: { slug: string } }> = ({ params }) =
           <p className="text-muted-teal mb-4">SKU: {product.sku}</p>
 
           <div className="flex items-baseline mb-4">
-            <span className="text-5xl font-bold text-magical-neon-purple-vibrant mr-3">{product.priceBDT}</span>
-            <span className="text-xl text-celadon-light">({product.priceUSD})</span>
+            <span className="text-5xl font-bold text-magical-neon-purple-vibrant mr-3">
+              {formatPrice(convertPrice(product.priceUSD))}
+            </span>
+            <span className="text-xl text-celadon-light">({product.priceUSD} USD)</span>
           </div>
 
           {/* Stock Status */}
@@ -140,7 +144,9 @@ const ProductDetailPage: React.FC<{ params: { slug: string } }> = ({ params }) =
           <div className="mb-6">
             <h3 className="text-lg font-medium mb-3">Shipping Information</h3>
             <p className="text-celadon-light">Estimated Delivery: {product.estimatedDelivery}</p>
-            <p className="text-celadon-light">Shipping Cost: {product.shippingCost}</p>
+            <p className="text-celadon-light">
+              Shipping Cost: {formatPrice(convertPrice(product.shippingCostUSD))}
+            </p>
             <p className="text-muted-teal text-sm mt-2">International shipping notice: Duties and taxes may apply.</p>
           </div>
 

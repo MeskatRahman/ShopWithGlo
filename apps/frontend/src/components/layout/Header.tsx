@@ -1,7 +1,11 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
+import { useCurrency } from '../../context/CurrencyContext';
 
 const Header: React.FC = () => {
+  const { selectedCurrency, currencies, changeCurrency } = useCurrency();
   return (
     <header className="bg-black-primary shadow-sm text-celadon-light">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -35,10 +39,16 @@ const Header: React.FC = () => {
         {/* Right Section: Currency, Cart, User Account */}
         <div className="flex items-center space-x-4">
           {/* Currency Selector */}
-          <select className="border border-dusty-olive-dark rounded-md px-3 py-2 focus:outline-none bg-carbon-black text-celadon-light">
-            <option>USD</option>
-            <option>EUR</option>
-            <option>BDT</option>
+          <select
+            className="border border-dusty-olive-dark rounded-md px-3 py-2 focus:outline-none bg-carbon-black text-celadon-light"
+            value={selectedCurrency.code}
+            onChange={(e) => changeCurrency(e.target.value)}
+          >
+            {currencies.map((currency) => (
+              <option key={currency.code} value={currency.code}>
+                {currency.code}
+              </option>
+            ))}
           </select>
 
           {/* Cart Icon */}

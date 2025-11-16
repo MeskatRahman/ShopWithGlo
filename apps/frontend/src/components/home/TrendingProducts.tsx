@@ -1,12 +1,15 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCurrency } from '../../context/CurrencyContext';
 
 interface Product {
   id: string;
   name: string;
   imageUrl: string;
-  price: string;
+  priceUSD: number; // Change to number for conversion
   slug: string;
 }
 
@@ -15,33 +18,35 @@ const trendingProducts: Product[] = [
     id: 'tp1',
     name: 'Ergonomic Office Chair',
     imageUrl: 'https://via.placeholder.com/300x300?text=Office+Chair',
-    price: '$249.99',
+    priceUSD: 249.99,
     slug: 'ergonomic-office-chair',
   },
   {
     id: 'tp2',
     name: 'Noise-Cancelling Earbuds',
     imageUrl: 'https://via.placeholder.com/300x300?text=Earbuds',
-    price: '$129.99',
+    priceUSD: 129.99,
     slug: 'noise-cancelling-earbuds',
   },
   {
     id: 'tp3',
     name: 'Portable Bluetooth Speaker',
     imageUrl: 'https://via.placeholder.com/300x300?text=Bluetooth+Speaker',
-    price: '$79.99',
+    priceUSD: 79.99,
     slug: 'portable-bluetooth-speaker',
   },
   {
     id: 'tp4',
     name: 'Organic Coffee Beans (1kg)',
     imageUrl: 'https://via.placeholder.com/300x300?text=Coffee+Beans',
-    price: '$29.99',
+    priceUSD: 29.99,
     slug: 'organic-coffee-beans',
   },
 ];
 
 const TrendingProducts: React.FC = () => {
+  const { convertPrice, formatPrice } = useCurrency();
+
   return (
     <section className="py-12 bg-charcoal-brown">
       <div className="container mx-auto px-4">
@@ -59,7 +64,9 @@ const TrendingProducts: React.FC = () => {
                 />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-celadon-light mb-2">{product.name}</h3>
-                  <p className="text-magical-neon-purple-vibrant font-bold">{product.price}</p>
+                  <p className="text-magical-neon-purple-vibrant font-bold">
+                    {formatPrice(convertPrice(product.priceUSD))}
+                  </p>
                 </div>
               </div>
             </Link>

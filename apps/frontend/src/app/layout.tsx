@@ -1,6 +1,9 @@
+"use client";
+
 import type { Metadata } from "next";
 import "./globals.css";
 import Layout from "../components/layout/Layout";
+import { CurrencyProvider } from "../context/CurrencyContext";
 
 export const metadata: Metadata = {
   title: "ShopWithGlo",
@@ -15,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout>{children}</Layout>
+        <CurrencyProvider>
+          <Layout>{children}</Layout>
+        </CurrencyProvider>
       </body>
     </html>
   );
