@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Layout from "../components/layout/Layout";
 import { CurrencyProvider } from "../context/CurrencyContext";
+import { CartProvider } from "../context/CartContext";
 
 export const metadata: Metadata = {
   title: "ShopWithGlo",
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CurrencyProvider>
-          <Layout>{children}</Layout>
+          <CartProvider>
+            <Layout>{children}</Layout>
+          </CartProvider>
         </CurrencyProvider>
       </body>
     </html>
