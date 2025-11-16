@@ -1,0 +1,13 @@
+{
+  "name": "shopwithglo-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --filter='./packages/*' build",
+    "dev": "pnpm --filter='./apps/*' dev"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
